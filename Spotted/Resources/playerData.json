@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "firstName": "Test",
+        "lastName": "Player",
+        "imageName": "turtlerock",
+        "score": 30,
+        "isFavorite": false
+    },
+    {
+        "id": 2,
+        "firstName": "Kyle",
+        "lastName": "Thompson",
+        "imageName": "turtlerock",
+        "score": 31,
+        "isFavorite": false
+    }
+]
