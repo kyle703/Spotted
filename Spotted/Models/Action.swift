@@ -40,3 +40,33 @@ struct Coordinates: Hashable, Codable {
     var latitude: Double
     var longitude: Double
 }
+
+class ActionButtonModel: Identifiable, ObservableObject {
+    var id: Int
+    var gradient: LinearGradient
+    @Published var isSelected: Bool
+    var text: String
+    var action: () -> Void
+   
+    init (id: Int, gradient: LinearGradient, isSelected: Bool, text: String, action: @escaping () -> Void) {
+        self.id = id
+        self.gradient = gradient
+        self.isSelected = isSelected
+        self.text = text
+        self.action = action
+    }
+}
+
+class ActionButtonList: ObservableObject {
+    @Published var actions = [ActionButtonModel]()
+    
+    
+    init(actions: [ActionButtonModel]) {
+        self.actions = actions
+    }
+    func appendAction(action: ActionButtonModel) {
+        objectWillChange.send()
+        actions.append(action);
+    }
+    
+}

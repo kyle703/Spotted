@@ -10,59 +10,51 @@ import SwiftUI
 
 struct ActionSelector: View {
     
-    let addButtonGradient = LinearGradient(gradient: Gradient(colors: [Color("Navy"), Color("GreenYellow")]), startPoint: .leading, endPoint: .trailing)
-    
-    let stealButtonGradient = LinearGradient(gradient: Gradient(colors: [Color("HotRed"), Color("DarkPurple")]), startPoint: .leading, endPoint: .trailing)
-    
-
-    @State private var isAddSelected = false
-    @State private var isStealSelected = false
+    var actions: [ActionButtonModel]
     
     var body: some View {
         VStack {
-            if isAddSelected {
-                Text("Who saw the cows?")
-                    .font(.system(size: 15))
-                    .padding(5)
-            } else if isStealSelected {
-                Text("Who is stealing?")
-                    .font(.system(size: 15))
-                    .padding(5)
-            }
+//            if isAddSelected {
+//                Text("Who saw the cows?")
+//                    .font(.system(size: 15))
+//                    .padding(5)
+//            } else if isStealSelected {
+//                Text("Who is stealing?")
+//                    .font(.system(size: 15))
+//                    .padding(5)
+//            }
             HStack {
                 Spacer()
-                ActionButton(gradient: addButtonGradient, isSelected: isAddSelected, text: "Add", action: addButtonTapped)
-                Spacer()
-                ActionButton(gradient: stealButtonGradient, isSelected: isStealSelected, text: "🐴Steal", action: stealButtonTapped)
-                Spacer()
+                ForEach(actions) { action in
+                    ActionButton(model: action)
+                    .isSelectedStyle(selected: action.isSelected)
+                    Spacer()
+                }
             }
         }
         
     }
     
-    func addButtonTapped() {
-        print("add")
-        if isAddSelected {
-            isAddSelected = false
-        } else {
-            isAddSelected = true
-            isStealSelected = false
-        }
-    }
     
-    func stealButtonTapped() {
-        print("steal")
-        if isStealSelected {
-            isStealSelected = false
-        } else {
-            isStealSelected = true
-            isAddSelected = false
-        }
-    }
+}
+
+extension View {
+    func isSelectedStyle(selected: BooleanLiteralType) -> some View {
+           self
+           .if(selected) { view in
+               view.padding(10)
+               .overlay(
+                   RoundedRectangle(cornerRadius: 40)
+                       .stroke(Color.red, lineWidth: 5)
+               )
+           }
+       }
 }
 
 struct ActionSelector_Previews: PreviewProvider {
+    static let model = ActionButton_Previews.model
+    static var actionList = [model]
     static var previews: some View {
-        ActionSelector()
+        ActionSelector(actions: actionList)
     }
 }

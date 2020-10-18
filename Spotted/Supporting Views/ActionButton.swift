@@ -10,33 +10,18 @@ import SwiftUI
 
 struct ActionButton: View {
     
-    var gradient: LinearGradient
-    var isSelected: Bool
-    var text: String
-    var action: () -> Void
+    var model: ActionButtonModel
      
     var body: some View {
-        Button(action: action)
+        Button(action: model.action)
         {
-            Text(text)
-            .actionButtonStyle(gradient: gradient)
-            .isSelectedStyle(selected: isSelected)
+            Text(model.text)
+                .actionButtonStyle(gradient: model.gradient)
         }
     }
 }
 
 extension View {
-    
-    func isSelectedStyle(selected: BooleanLiteralType) -> some View {
-        self
-        .if(selected) { view in
-            view.padding(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 40)
-                    .stroke(Color.red, lineWidth: 5)
-            )
-        }
-    }
 
     func actionButtonStyle(gradient: LinearGradient) -> some View {
         self
@@ -56,8 +41,9 @@ struct ActionButton_Previews: PreviewProvider {
     static func action() {
         print("just a test bro!!")
     }
-    
+    static let model = ActionButtonModel(id: 0, gradient: gradient, isSelected: true, text: "HELLO", action: action)
+
     static var previews: some View {
-        ActionButton(gradient: gradient, isSelected:true, text:"action button", action: action)
+        ActionButton(model: model)
     }
 }
