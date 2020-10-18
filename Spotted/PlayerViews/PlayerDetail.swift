@@ -13,7 +13,7 @@ struct PlayerDetail: View {
     var player: Player
     
     var playerIndex: Int {
-        userData.players.firstIndex(where: { $0.id == player.id })!
+        userData.game.players.firstIndex(where: { $0.id == player.id })!
     }
     
     var body: some View {
@@ -29,10 +29,10 @@ struct PlayerDetail: View {
                         .font(.title)
                     
                     Button(action: {
-                        self.userData.players[self.playerIndex]
+                        self.userData.game.players[self.playerIndex]
                             .isFavorite.toggle()
                     }) {
-                        if self.userData.players[self.playerIndex]
+                        if self.userData.game.players[self.playerIndex]
                             .isFavorite {
                             Image(systemName: "star.fill")
                                 .foregroundColor(Color.yellow)
@@ -61,7 +61,7 @@ struct PlayerDetail: View {
 struct PlayerDetail_Previews: PreviewProvider {
     static var previews: some View {
         let userData = UserData()
-        return PlayerDetail(player: userData.players[0])
+        return PlayerDetail(player: userData.game.players[0])
             .environmentObject(userData)
     }
 }

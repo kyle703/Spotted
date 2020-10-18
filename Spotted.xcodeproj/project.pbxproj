@@ -31,6 +31,7 @@
 		08C55781253B31E700C75693 /* ActionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C55780253B31E700C75693 /* ActionSelector.swift */; };
 		08C55783253B73BE00C75693 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C55782253B73BE00C75693 /* ActionButton.swift */; };
 		08C55785253B836500C75693 /* PlayersTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C55784253B836500C75693 /* PlayersTable.swift */; };
+		08C5578A253CDCD100C75693 /* gameData.json in Resources */ = {isa = PBXBuildFile; fileRef = 08C55789253CDCD100C75693 /* gameData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		08C55780253B31E700C75693 /* ActionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSelector.swift; sourceTree = "<group>"; };
 		08C55782253B73BE00C75693 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		08C55784253B836500C75693 /* PlayersTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersTable.swift; sourceTree = "<group>"; };
+		08C55789253CDCD100C75693 /* gameData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = gameData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 			children = (
 				08C55771252A315A00C75693 /* turtlerock.jpg */,
 				08C55775252A353C00C75693 /* playerData.json */,
+				08C55789253CDCD100C75693 /* gameData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				08C55772252A315A00C75693 /* turtlerock.jpg in Resources */,
 				0837F2402529FFFD002292D2 /* LaunchScreen.storyboard in Resources */,
 				0837F23D2529FFFD002292D2 /* Preview Assets.xcassets in Resources */,
+				08C5578A253CDCD100C75693 /* gameData.json in Resources */,
 				0837F23A2529FFFD002292D2 /* Assets.xcassets in Resources */,
 				08C55776252A353C00C75693 /* playerData.json in Resources */,
 			);

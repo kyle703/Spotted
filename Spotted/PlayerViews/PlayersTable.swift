@@ -11,6 +11,7 @@ import SwiftUI
 struct PlayersTable: View {
     @EnvironmentObject private var userData: UserData
     
+    
     private static let addButtonGradient = LinearGradient(gradient: Gradient(colors: [Color("Navy"), Color("GreenYellow")]), startPoint: .leading, endPoint: .trailing)
     private static let stealButtonGradient = LinearGradient(gradient: Gradient(colors: [Color("HotRed"), Color("DarkPurple")]), startPoint: .leading, endPoint: .trailing)
     
@@ -22,7 +23,7 @@ struct PlayersTable: View {
     var body: some View {
         NavigationView {
             VStack {
-                PlayerList(players: userData.players)
+                PlayerList(players: userData.game.players)
                 .navigationBarTitle(Text("Players"))
                 ActionSelector(actions: actionList.actions)
             }

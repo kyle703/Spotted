@@ -12,6 +12,8 @@ import UIKit
 import SwiftUI
 
 let playerData: [Player] = load("playerData.json")
+let gameData: Game = load("gameData.json")
+
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
@@ -34,6 +36,14 @@ func load<T: Decodable>(_ filename: String) -> T {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
 }
+
+func encode () {
+    let date = Date()
+    let jsonData = try!JSONEncoder().encode(date)
+    let jsonString = String(data: jsonData, encoding: .utf8)!
+    print(jsonString)
+}
+
 
 final class ImageStore {
     typealias _ImageDictionary = [String: CGImage]

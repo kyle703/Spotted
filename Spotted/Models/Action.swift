@@ -16,24 +16,27 @@ import CoreLocation
 
 struct Action: Hashable, Codable, Identifiable {
     var id: Int
-    var actionType: ActionType
+    var actionType = ActionType.none
     var datetime: Date
-    fileprivate var coordinates: Coordinates
-    var playerTo: Player
-    var playerFrom: Player
+    fileprivate var coordinates: Coordinates?
+    var playerTo: Player?
+    var playerFrom: Player?
     
     var isActive: Bool
     
     enum ActionType: String, Codable, Hashable {
         case add = "Add"
         case steal = "Steal"
+        case none = "No Action"
     }
     
     var locationCoordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(
-            latitude: coordinates.latitude,
-            longitude: coordinates.longitude)
+            latitude: coordinates?.latitude ?? 0.0,
+            longitude: coordinates?.longitude ?? 0.0)
     }
+    
+    
 }
 
 struct Coordinates: Hashable, Codable {

@@ -11,5 +11,5 @@ import SwiftUI
 
 final class UserData: ObservableObject {
     @Published var showMineOnly = false
-    @Published var players = playerData
+    @Published var game = gameData
 }

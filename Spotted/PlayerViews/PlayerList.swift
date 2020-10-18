@@ -12,7 +12,7 @@ struct PlayerList: View {
     var players: [Player]
     
     
-     static var playerCardGradient = LinearGradient(gradient: Gradient(colors: [Color("CoolBlue"), Color("CoolSkyBlue"), Color.white]), startPoint: .leading, endPoint: .trailing)
+    static var playerCardGradient = LinearGradient(gradient: Gradient(colors: [Color("CoolBlue"), Color("CoolSkyBlue"), Color.white]), startPoint: .leading, endPoint: .trailing)
     
     var body: some View {
         List {

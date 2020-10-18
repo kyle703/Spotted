@@ -1,0 +1,42 @@
+
+{
+    "id": 1,
+    "name": "Game",
+    "imageName": "turtlerock",
+    "players": [
+        {
+            "id": 1,
+            "firstName": "Test",
+            "lastName": "Player",
+            "imageName": "turtlerock",
+            "score": 30,
+            "isFavorite": false
+        },
+        {
+            "id": 2,
+            "firstName": "Kyle",
+            "lastName": "Thompson",
+            "imageName": "turtlerock",
+            "score": 31,
+            "isFavorite": false
+        }
+    ],
+    "gamelog": [{
+        "id": 0,
+        "actionType": "No Action",
+        "datetime": 624746729.72266603,
+        "coordinates": null,
+        "playerTo": null,
+        "playerFrom": null,
+        "isActive": true
+    }],
+    "currentAction": {
+        "id": 1,
+        "actionType": "No Action",
+        "datetime": 624746729.72266603,
+        "coordinates": null,
+        "playerTo": null,
+        "playerFrom": null,
+        "isActive": true
+    }
+}

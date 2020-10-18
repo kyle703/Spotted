@@ -14,7 +14,11 @@ struct Game: Codable, Hashable, Identifiable {
     var imageName: String
     var players: [Player]
     var gamelog: [Action]
+    var currentAction: Action
+    
 }
+
+
 
 extension Game {
     var image: Image {
