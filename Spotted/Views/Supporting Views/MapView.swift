@@ -12,6 +12,7 @@ import MapKit
 struct MapView: UIViewRepresentable {
     
     @Binding var centerCoordinate: CLLocationCoordinate2D
+    @State private var locations = [MKPointAnnotation]()
     var annotations: [MKPointAnnotation]
 
     func makeUIView(context: Context) -> MKMapView {
@@ -43,6 +44,36 @@ struct MapView: UIViewRepresentable {
             parent.centerCoordinate = mapView.centerCoordinate
         }
     }
+    
+    
+//    var body: some View {
+//        ZStack {
+//            MapView(centerCoordinate: $centerCoordinate, annotations: locations)
+//            Circle()
+//                .fill(Color.blue)
+//                .opacity(0.3)
+//                .frame(width: 32, height: 32)
+//            VStack {
+//                Spacer()
+//                HStack {
+//                    Spacer()
+//                    Button(action : {
+//                        let newLocation = MKPointAnnotation()
+//                        newLocation.coordinate = self.centerCoordinate
+//                        self.locations.append(newLocation)
+//                    }) {
+//                        Image(systemName: "plus")
+//                    }
+//                    .padding()
+//                    .background(Color.black.opacity(0.75))
+//                    .foregroundColor(Color.white)
+//                    .font(.title)
+//                    .clipShape(Circle())
+//                    .padding(.trailing)
+//                }
+//            }
+//        }
+//    }
 }
 
 struct MapView_Previews: PreviewProvider {
@@ -60,3 +91,5 @@ extension MKPointAnnotation {
         return annotation
     }
 }
+
+

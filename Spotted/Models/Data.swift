@@ -11,8 +11,6 @@ import CoreLocation
 import UIKit
 import SwiftUI
 
-let playerData: [Player] = load("playerData.json")
-let gameData: Game = load("gameData.json")
 
 
 func load<T: Decodable>(_ filename: String) -> T {

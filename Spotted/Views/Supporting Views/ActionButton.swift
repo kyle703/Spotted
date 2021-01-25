@@ -10,20 +10,30 @@ import SwiftUI
 
 struct ActionButton: View {
     
-    var model: ActionButtonModel
-     
+    var gradient:  LinearGradient
+    var label: String
+    var action: () -> Void;
+    
+    @State var selected = false
+    
     var body: some View {
-        Button(action: model.action)
+        Button(action: buttonAction)
         {
-            Text(model.text)
-                .actionButtonStyle(gradient: model.gradient)
+            Text(label)
         }
+        .actionButtonStyle(gradient: gradient, selected: selected)
+    }
+    
+    func buttonAction() {
+        self.selected.toggle()
+        // other things
+        action()
     }
 }
 
 extension View {
 
-    func actionButtonStyle(gradient: LinearGradient) -> some View {
+    func actionButtonStyle(gradient: LinearGradient, selected: Bool) -> some View {
         self
         .frame(minWidth: 0, maxWidth: .infinity)
         .font(Font.system(size: 20).weight(.semibold))
@@ -33,6 +43,7 @@ extension View {
         .cornerRadius(40)
         .shadow(color: .gray, radius: 20.0, x: 20, y: 10)
         .foregroundColor(Color.white)
+        .scaleEffect(selected ? 0.9 : 1.0)
     }
 }
 
@@ -41,9 +52,8 @@ struct ActionButton_Previews: PreviewProvider {
     static func action() {
         print("just a test bro!!")
     }
-    static let model = ActionButtonModel(id: 0, gradient: gradient, isSelected: true, text: "HELLO", action: action)
 
     static var previews: some View {
-        ActionButton(model: model)
+        ActionButton(gradient: gradient, label: "test", action: self.action)
     }
 }
