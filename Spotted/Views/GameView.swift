@@ -21,7 +21,8 @@ struct GameView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    var game: Game;
+
+    @ObservedObject var gameStorage: GameStorage
 
     @State var actionState: ActionState = .navigate
     @State var selectedPlayer: Player?
@@ -31,7 +32,7 @@ struct GameView: View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .bottomTrailing) {
                 
-                PlayerList(players: Array(game.players!) as! [Player], actionState: actionState, selectedPlayer: $selectedPlayer)
+                PlayerList(players: Array(gameStorage.selectedGame!.players!) as! [Player], actionState: actionState, selectedPlayer: $selectedPlayer)
 
                 ActionOverlay(spotFunction: spot, stealFunction: steal, cancelFunction: cancel, actionState: actionState)
 
@@ -46,7 +47,7 @@ struct GameView: View {
                 SpotModal(selectedPlayer: selectedPlayer, onComplete: confirmSpot)
             }
         }
-        .navigationBarTitle(game.name ?? "Game")
+        .navigationBarTitle(gameStorage.selectedGame?.name ?? "Game")
         .navigationBarItems(trailing: Button(action: { activeSheet = .addPlayer }) { Image(systemName: "plus") })
         
     }
@@ -63,7 +64,7 @@ struct GameView: View {
         newPlayer.lastName = lastName
         newPlayer.imageName = imageName
         
-        newPlayer.addToGame(game)
+        newPlayer.addToGame(gameStorage.selectedGame!)
         try? managedObjectContext.save()
         
         activeSheet = .none

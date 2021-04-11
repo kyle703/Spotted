@@ -23,16 +23,17 @@ struct GameDropDown: View {
             return DropdownOption(key: game.id!.uuidString, val: game.name!)
         });
         self.onSelect = { key in
-//            let game: Game? = games.first { (game:Game) -> Bool in
-//                return game.id!.uuidString == key
-//            }
-            print(key)
+            let game: Game? = gameStorage.games.first { (game:Game) -> Bool in
+                return game.id!.uuidString == key
+            }
+            gameStorage.selectedGame = game;
         }
     }
     
     var body: some View {
-        DropdownButton(displayText: .constant("This month"), options: options ?? [], onSelect: onSelect)
+        DropdownButton(displayText: .constant("Switch games"), options: options ?? [], onSelect: onSelect)
             .foregroundColor(Color.primaryBlack)
+            
 
     }
 }
@@ -45,7 +46,7 @@ struct DropdownButton: View {
     var options: [DropdownOption]
     var onSelect: ((_ key: String) -> Void)?
 
-    let buttonHeight: CGFloat = 30
+    let buttonHeight: CGFloat = 40
     var body: some View {
         Button(action: {
             self.shouldShowDropdown.toggle()
@@ -148,7 +149,7 @@ struct DropdownButton_Previews: PreviewProvider {
                 Dropdown(options: options, onSelect: onSelect)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.blue)
+            .background(Color.primaryBlack)
             .foregroundColor(Color.primaryBlack)
         }
     }

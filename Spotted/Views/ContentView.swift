@@ -33,7 +33,8 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                ParentView(viewRouter: viewRouter)
+                .zIndex(1)
+                ParentView(viewRouter: viewRouter, gameStorage: gameStorage)
             }
             .edgesIgnoringSafeArea(.all)
             .scaleEffect(isMenuShown ? 0.8 : 1)

@@ -21,11 +21,34 @@ struct SideMenu: View {
     @ObservedObject var viewRouter: ViewRouter
     @ObservedObject var gameStorage: GameStorage
     
-    var buttons: [MenuButton]
-    
     init(viewRouter: ViewRouter, gameStorage: GameStorage) {
         self.viewRouter = viewRouter
         self.gameStorage = gameStorage
+     }
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                
+                SideMenuHeader(gameStorage: gameStorage)
+                    .zIndex(1)
+                    .padding(.horizontal)
+                SideBarNav(viewRouter: viewRouter)
+                
+                
+            }
+            Spacer()
+        }
+    }
+}
+
+struct SideBarNav: View {
+    
+    @ObservedObject var viewRouter: ViewRouter
+    var buttons: [MenuButton]
+    
+    init(viewRouter: ViewRouter) {
+        self.viewRouter = viewRouter
         
         buttons = [
             MenuButton(text: "Scoreboard", sfsymbol: "person.fill.badge.plus", action: {viewRouter.currentPage = .playerList}),
@@ -33,27 +56,34 @@ struct SideMenu: View {
             MenuButton(text: "Game Log", sfsymbol: "scroll", action: {viewRouter.currentPage = .actionLog}),
             MenuButton(text: "Settings", sfsymbol: "gear", action: {viewRouter.currentPage = .settings})
         ]
-     }
+    }
     
-
-
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                GameDropDown(gameStorage: gameStorage)
-                    .frame(width: 150)
-                VStack {
-                    ForEach(buttons, id: \.id) { button in
-                        Button(action: button.action, label: {
-                            HStack {
-                                Image(systemName: button.sfsymbol)
-                                Text(button.text)
-                            }.foregroundColor(.black).padding()
-                        })
-                    }
-                }
-            }.edgesIgnoringSafeArea(.all)
-            Spacer()
+        VStack {
+            ForEach(buttons, id: \.id) { button in
+                Button(action: button.action, label: {
+                    HStack {
+                        Image(systemName: button.sfsymbol)
+                        Text(button.text)
+                    }.foregroundColor(.black).padding()
+                })
+            }
+        }
+    }
+}
+
+@available(iOS 14.0, *)
+struct SideMenuHeader: View {
+    @ObservedObject var gameStorage: GameStorage
+    
+    var body: some View {
+        VStack {
+            CircleImage(image: Image(gameStorage.selectedGame?.imageName ?? "turtlerock"))
+                .frame(width: 100, height: 100, alignment: .center)
+            Text(gameStorage.selectedGame?.name ?? "")
+                .fontWeight(.bold)
+                .font(.title)
+            GameDropDown(gameStorage: gameStorage)
         }
     }
 }

@@ -11,14 +11,6 @@ import CoreData
 
 class ViewRouter: ObservableObject {
     @Published var currentPage: Page = .playerList
-    @Published var selectedGame: Game? = nil
-    
-    @FetchRequest(
-        entity: Game.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Game.id, ascending: false)
-        ]
-    ) var games: FetchedResults<Game>
 }
 
 var allGamesFetchRequest: NSFetchRequest<Game> {
@@ -29,25 +21,27 @@ var allGamesFetchRequest: NSFetchRequest<Game> {
 }
 
 class GameStorage: NSObject, ObservableObject {
-  @Published var games: [Game] = []
-  private let gameController: NSFetchedResultsController<Game>
+    @Published var games: [Game] = []
+    @Published var selectedGame: Game? = nil
+    private let gameController: NSFetchedResultsController<Game>
 
-  init(managedObjectContext: NSManagedObjectContext) {
-    gameController = NSFetchedResultsController(fetchRequest: allGamesFetchRequest,
-    managedObjectContext: managedObjectContext,
-    sectionNameKeyPath: nil, cacheName: nil)
+    init(managedObjectContext: NSManagedObjectContext) {
+        gameController = NSFetchedResultsController(fetchRequest: allGamesFetchRequest,
+                                                    managedObjectContext: managedObjectContext,
+                                                    sectionNameKeyPath: nil, cacheName: nil)
 
-    super.init()
+        super.init()
 
-    gameController.delegate = self
+        gameController.delegate = self
 
-    do {
-      try gameController.performFetch()
-      games = gameController.fetchedObjects ?? []
-    } catch {
-      print("failed to fetch items!")
+        do {
+            try gameController.performFetch()
+            games = gameController.fetchedObjects ?? []
+            selectedGame =  games.first
+        } catch {
+          print("failed to fetch items!")
+        }
     }
-  }
 }
 
 extension GameStorage: NSFetchedResultsControllerDelegate {
@@ -62,6 +56,8 @@ extension GameStorage: NSFetchedResultsControllerDelegate {
 @available(iOS 14.0, *)
 struct ParentView: View {
     @ObservedObject var viewRouter: ViewRouter
+    @ObservedObject var gameStorage: GameStorage
+
     
     var body: some View {
         switch viewRouter.currentPage {
@@ -70,7 +66,7 @@ struct ParentView: View {
         case .analytics:
             Text("analytics")
         case .playerList:
-            Text("playerList")
+            GameView(gameStorage: gameStorage)
         case .settings:
             Text("Settings")
         }
