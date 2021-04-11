@@ -5,8 +5,8 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="gameLog" inverseEntity="Game"/>
-        <relationship name="playerFrom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player"/>
-        <relationship name="playerTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="actions" inverseEntity="Player"/>
+        <relationship name="playerFrom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="actionsFrom" inverseEntity="Player"/>
+        <relationship name="playerTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="actionsTo" inverseEntity="Player"/>
     </entity>
     <entity name="Game" representedClassName=".Game" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -21,12 +21,13 @@
         <attribute name="imageName" optional="YES" attributeType="String"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Action" inverseName="playerTo" inverseEntity="Action"/>
+        <relationship name="actionsFrom" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Action" inverseName="playerFrom" inverseEntity="Action"/>
+        <relationship name="actionsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="playerTo" inverseEntity="Action"/>
         <relationship name="game" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="players" inverseEntity="Game"/>
     </entity>
     <elements>
         <element name="Action" positionX="400.7592010498047" positionY="-214.1316528320312" width="128" height="119"/>
         <element name="Game" positionX="66.24285888671875" positionY="-405.4035034179688" width="128" height="104"/>
-        <element name="Player" positionX="12.31889343261719" positionY="-156.2770385742188" width="128" height="134"/>
+        <element name="Player" positionX="12.31889343261719" positionY="-156.2770385742188" width="128" height="149"/>
     </elements>
 </model>

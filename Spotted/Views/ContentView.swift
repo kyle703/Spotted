@@ -11,68 +11,37 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    
-    @FetchRequest(
-        entity: Game.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Game.id, ascending: false)
-        ]
-    ) var games: FetchedResults<Game>
 
-    @State var isPresented = false
-
+    @State var isMenuShown = false
+    @StateObject var viewRouter = ViewRouter()
+    @StateObject var gameStorage: GameStorage
     
     var body: some View {
-        NavigationView {
+        ZStack {
+            SideMenu(viewRouter: viewRouter, gameStorage: gameStorage)
             ZStack {
-                List {
-                    ForEach(games, id: \.id) { game in
-                        NavigationLink(destination: GameView(game: game), label: { Text("\(game.name!)")})
-                    } //                .onDelete(perform: deleteMovie)
-                }
-
-                VStack(alignment:.trailing) {
-                    Spacer()
-                    Button(action: { self.isPresented.toggle() }) {
-                        HStack {
-                            Text("New Game")
-                                .padding()
-                            Image(systemName: "plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 25, height: 25)
+                
+                Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                VStack {
+                    Spacer().frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    HStack {
+                        Button(action: {self.isMenuShown.toggle()}) {
+                            Image(systemName: "ellipsis")
                                 .padding()
                         }
-                        .foregroundColor(Color.white)
-                        .background(Color.secondaryBrown)
-                        .cornerRadius(50)
+                        Spacer()
                     }
+                    Spacer()
                 }
+                ParentView(viewRouter: viewRouter)
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(content: {
-                ToolbarItem(placement: .principal, content: {
-                    Text("Detail View Title")
-                })
-            })
+            .edgesIgnoringSafeArea(.all)
+            .scaleEffect(isMenuShown ? 0.8 : 1)
+            .offset(x: isMenuShown ? 200 : 0)
+            .animation(.easeInOut(duration: 0.2))
+            .shadow(radius: 4)
         }
-        
-        .sheet(isPresented: $isPresented) { AddGame(onComplete: onComplete) }
     }
-    
-    private func onComplete (name: String, imageName: String) -> Void {
-        self.addGame(name: name, imageName: imageName)
-        self.isPresented = false
-    }
-    
-    func addGame(name: String, imageName: String) {
-        let newGame = Game(context: managedObjectContext)
-
-        newGame.name = name
-        newGame.imageName = imageName
-        newGame.id = UUID()
-
-      }
 
 }
 

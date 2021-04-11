@@ -8,33 +8,24 @@
 
 import UIKit
 import SwiftUI
-import CoreData
-
 
 @available(iOS 14.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-      let container = NSPersistentContainer(name: "Spotted")
-      container.loadPersistentStores { _, error in
-
-        if let error = error as NSError? {
-          fatalError("Unresolved error \(error), \(error.userInfo)")
-        }
-      }
-      return container
-    }()
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        let context = persistentContainer.viewContext
-        let contentView = ContentView().environment(\.managedObjectContext, context)
+
+        let context = CoreDataManager.shared.context
+        let storage = GameStorage(managedObjectContext: context)
+        let contentView = ContentView(gameStorage: storage).environment(\.managedObjectContext, context)
+
+        
+        
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -68,22 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-      saveContext()
-    }
-
-    func saveContext() {
-      let context = persistentContainer.viewContext
-        
-      if context.hasChanges {
-        do {
-          try context.save()
-        } catch {
-          // The context couldn't be saved.
-          // You should add your own error handling here.
-          let nserror = error as NSError
-          fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-      }
+        CoreDataManager.shared.save()
     }
 }
 

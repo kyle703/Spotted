@@ -25,7 +25,7 @@ struct PlayerList: View {
         List {
             ForEach(players, id: \.self) { player in
                 NavigationLink(destination: PlayerDetail(player: player), isActive: isPlayerDetailActive(player: player)) {
-                    PlayerRow(player: player, selectedPlayer: selectedPlayer, actionState: actionState)
+                    PlayerRow(player: player, action: actionState, selectedPlayer: selectedPlayer)
                 }
                 .onTapGesture {
                         self.handleTap(player: player)

@@ -8,11 +8,6 @@
 
 import SwiftUI
 
-enum ActionState: Int {
-    case spot = 0
-    case steal = 1
-    case navigate = 2
-}
 
 enum ActiveSheet: Identifiable {
     case addPlayer, spot
@@ -26,7 +21,7 @@ struct GameView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    var game: Game
+    var game: Game;
 
     @State var actionState: ActionState = .navigate
     @State var selectedPlayer: Player?

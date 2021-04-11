@@ -11,41 +11,17 @@ import SwiftUI
 
 struct PlayerRow: View {
     var player: Player
+    var action: ActionState
     
-    var selectedPlayer: Player?
-    var actionState: ActionState
-
-    
-    let playerCardGradient = LinearGradient(gradient: Gradient(colors: [Color("CoolBlue"), Color("CoolSkyBlue"), Color.white]), startPoint: .leading, endPoint: .trailing)
-    
-    @State private var phase: CGFloat = 0
-
-        
     var body: some View {
       playerCell()
     }
     
     func playerCell() -> some View {
-        print(player)
         return playerCard()
                 .padding()
                 .background(Color.primaryBlack)
                 .cornerRadius(10)
-                .overlay( playerCardOverlay() )
-    }
-    
-    func playerCardOverlay() -> some View {
-        return Group {
-            if actionState != .navigate && player != selectedPlayer {
-                RoundedRectangle(cornerRadius: 10)
-                .strokeBorder(Color.secondaryBlue, style: StrokeStyle(lineWidth: 5, dash: [10], dashPhase: phase))
-                .onAppear { self.phase -= 20 }
-                .animation(Animation.linear.repeatForever(autoreverses: false))
-            } else if actionState != .navigate && player == selectedPlayer {
-                RoundedRectangle(cornerRadius: 10)
-                .strokeBorder(Color.secondaryGreen, lineWidth: 5)
-            }
-        }
     }
     
     func playerCard() -> some View {
@@ -74,6 +50,23 @@ struct PlayerRow: View {
                 }
             }
             Spacer()
+        }
+    }
+    
+    @State private var phase: CGFloat = 0
+    var selectedPlayer: Player?
+
+    func playerCardOverlay() -> some View {
+        return Group {
+            if action != .navigate && player != selectedPlayer {
+                RoundedRectangle(cornerRadius: 10)
+                .strokeBorder(Color.secondaryBlue, style: StrokeStyle(lineWidth: 5, dash: [10], dashPhase: phase))
+                .onAppear { self.phase -= 20 }
+                .animation(Animation.linear.repeatForever(autoreverses: false))
+            } else if action != .navigate && player == selectedPlayer {
+                RoundedRectangle(cornerRadius: 10)
+                .strokeBorder(Color.secondaryGreen, lineWidth: 5)
+            }
         }
     }
 }
