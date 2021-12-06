@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3B4AB2E3-9E96-42AA-AC87-CA006E28B0D0"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2950E038-B83F-4C64-BF44-BEB79C512ED1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpottedAgain/Neumorphic.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "26CCCD15-771A-423A-BC0C-0344102728A8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpottedAgain/Neumorphic.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "446828A1-C77D-4435-9035-40DA4915447E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9366D9A5-6816-4F7E-AC24-A88CE5103D7D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "109D9BDF-522D-48DE-B146-4625BC23B906"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "ActionView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "109D9BDF-522D-48DE-B146-4625BC23B906 - 46e29135f7535875"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of SpottedAgain.ActionView.(selected in _73AA98CEDF66FB68DD975D3508E19AEC) : Swift.Optional&lt;SpottedAgain.Player&gt;"
+                  moduleName = "SpottedAgain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylethompson/Documents/code/SpottedAgain/ActionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "109D9BDF-522D-48DE-B146-4625BC23B906 - e84bcd0352892f56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpottedAgain.ActionView.init(game: SwiftUI.EnvironmentObject&lt;SpottedAgain.Game&gt;, presentationMode: SwiftUI.Environment&lt;SwiftUI.Binding&lt;SwiftUI.PresentationMode&gt;&gt;) -&gt; SpottedAgain.ActionView"
+                  moduleName = "SpottedAgain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylethompson/Documents/code/SpottedAgain/ActionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "203">
+               </Location>
+               <Location
+                  uuid = "109D9BDF-522D-48DE-B146-4625BC23B906 - 38bf699ff4c89bcd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpottedAgain.ActionView.init() -&gt; SpottedAgain.ActionView"
+                  moduleName = "SpottedAgain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylethompson/Documents/code/SpottedAgain/ActionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "343">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6041F5E-85F5-4512-A9B0-D2BBA9AE11B1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "ActionView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "B6041F5E-85F5-4512-A9B0-D2BBA9AE11B1 - b97d5871f0d5791e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of SpottedAgain.ActionView.(num in _73AA98CEDF66FB68DD975D3508E19AEC) : SpottedAgain.NumbersOnly"
+                  moduleName = "SpottedAgain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylethompson/Documents/code/SpottedAgain/ActionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "B6041F5E-85F5-4512-A9B0-D2BBA9AE11B1 - e84bcd0352892eb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpottedAgain.ActionView.init(game: SwiftUI.EnvironmentObject&lt;SpottedAgain.Game&gt;, presentationMode: SwiftUI.Environment&lt;SwiftUI.Binding&lt;SwiftUI.PresentationMode&gt;&gt;) -&gt; SpottedAgain.ActionView"
+                  moduleName = "SpottedAgain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylethompson/Documents/code/SpottedAgain/ActionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "295">
+               </Location>
+               <Location
+                  uuid = "B6041F5E-85F5-4512-A9B0-D2BBA9AE11B1 - 38bf699ff4c89a2e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpottedAgain.ActionView.init() -&gt; SpottedAgain.ActionView"
+                  moduleName = "SpottedAgain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylethompson/Documents/code/SpottedAgain/ActionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "463">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
